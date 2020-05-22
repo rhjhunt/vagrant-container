@@ -1,5 +1,7 @@
 # vagrant-container
 
+![Docker Image CI](https://github.com/rhjhunt/vagrant-container/workflows/Docker%20Image%20CI/badge.svg)
+
 A vagrant container image built on Fedora.
 
 ## Pull
