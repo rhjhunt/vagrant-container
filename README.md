@@ -52,3 +52,20 @@ vagrant up
 vagrant ssh
 vagrant destroy
 ```
+
+## Install Plugins
+
+The container image doesn't have any Vagrant plugins installed, the decision was made to avoid potential conflicts by not packaging plugins.
+To install plugins, assuming you have created the alias to vagrant you can simply install the plugin as you normally would.
+
+```bash
+vagrant plugin install vagrant-libvirt
+```
+
+You can verify the plugins that are installed by listing them.
+
+```bash
+$ vagrant plugin list
+vagrant-hostmanager (1.8.9, global)
+vagrant-libvirt (0.1.2, global)
+```
