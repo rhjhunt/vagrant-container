@@ -1,7 +1,7 @@
-FROM registry.fedoraproject.org/fedora:32
+FROM registry.fedoraproject.org/fedora:33
 
 LABEL name="vagrant-container" \
-      version="1.2" \
+      version="1.3" \
       architecture="x86_64" \
       URL="https://github.com/rhjhunt/vagrant-container" \
       vcs-type="git" \
@@ -14,11 +14,11 @@ LABEL name="vagrant-container" \
            quay.io/rhjhunt/vagrant-container:latest"
 
 RUN dnf -y --setopt=tsflags='' update && \ 
-    dnf -y --setopt=tsflags='' install https://releases.hashicorp.com/vagrant/2.2.10/vagrant_2.2.10_x86_64.rpm && \
+    dnf -y --setopt=tsflags='' install https://releases.hashicorp.com/vagrant/2.2.13/vagrant_2.2.13_x86_64.rpm && \
     dnf -y --setopt=tsflags='' install openssh-clients libvirt-daemon-kvm qemu-kvm libvirt-devel xz \
     make rdesktop ansible gcc gcc-c++ ruby rubygems rubygem-fog-libvirt rubygem-nokogiri cpio cmake \
     rubygem-bundler rubygem-rdoc rubygem-rspec rubygem-thor rubygems-devel libxml2-devel dnf-plugins-core \
-    flex bison libxml2-devel libxslt-devel wget && \
+    flex bison libxml2-devel libxslt-devel wget perl-vars && \
     # The following steps are a workaround for the following bugs
     # https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1127
     # https://github.com/hashicorp/vagrant/issues/11020
@@ -34,7 +34,7 @@ RUN dnf -y --setopt=tsflags='' update && \
     cp lib/libk5crypto.so.3 /opt/vagrant/embedded/lib64 && \
     cd ../../ && \
     dnf download --source libssh && \
-    rpm2cpio libssh-0.9.5-1.fc32.src.rpm | cpio -imdV && \
+    rpm2cpio libssh-0.9.5-1.fc33.src.rpm | cpio -imdV && \
     tar xf libssh-0.9.5.tar.xz && \
     mkdir build && \
     cd build && \
