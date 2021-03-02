@@ -1,7 +1,7 @@
 FROM registry.fedoraproject.org/fedora:33
 
 LABEL name="vagrant-container" \
-      version="1.4" \
+      version="1.6" \
       architecture="x86_64" \
       URL="https://github.com/rhjhunt/vagrant-container" \
       vcs-type="git" \
