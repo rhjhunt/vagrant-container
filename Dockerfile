@@ -1,9 +1,9 @@
-FROM registry.fedoraproject.org/fedora:33
+FROM registry.fedoraproject.org/fedora:34
 
 LABEL name="vagrant-container" \
-      version="2.2.15" \
+      version="2.2.15-1" \
       architecture="x86_64" \
-      URL="https://github.com/rhjhunt/vagrant-container" \
+      url="https://github.com/rhjhunt/vagrant-container" \
       vcs-type="git" \
       vcs-url="https://github.com/rhjhunt/vagrant-container.git" \
       distribution-scope="public" \
@@ -34,7 +34,7 @@ RUN dnf -y --setopt=tsflags='' update && \
     cp lib/libk5crypto.so.3 /opt/vagrant/embedded/lib64 && \
     cd ../../ && \
     dnf download --source libssh && \
-    rpm2cpio libssh-0.9.5-1.fc33.src.rpm | cpio -imdV && \
+    rpm2cpio libssh-0.9.5-2.fc34.src.rpm | cpio -imdV && \
     tar xf libssh-0.9.5.tar.xz && \
     mkdir build && \
     cd build && \
