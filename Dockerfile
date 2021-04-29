@@ -29,7 +29,7 @@ RUN dnf -y --setopt=tsflags='' update && \
     rpm2cpio krb5-1.17-18.el8.src.rpm | cpio -imdV && \
     tar xf krb5-1.17.tar.gz && \
     cd krb5-1.17/src && \
-    LDFLAGS='-L/opt/vagrant/embedded/' bash configure && \
+    LDFLAGS='-L/opt/vagrant/embedded/' CONFIG_SHELL=/bin/bash ./configure && \
     make && \
     cp lib/libk5crypto.so.3 /opt/vagrant/embedded/lib64 && \
     cd ../../ && \
