@@ -18,7 +18,7 @@ RUN dnf -y --setopt=tsflags='' update && \
     dnf -y --setopt=tsflags='' install openssh-clients libvirt-daemon-kvm qemu-kvm libvirt-devel xz \
     make rdesktop ansible gcc gcc-c++ ruby rubygems rubygem-fog-libvirt rubygem-nokogiri cpio cmake \
     rubygem-bundler rubygem-rdoc rubygem-rspec rubygem-thor rubygems-devel libxml2-devel dnf-plugins-core \
-    flex bison libxml2-devel libxslt-devel wget perl-vars && \
+    flex bison libxml2-devel libxslt-devel wget perl-vars zsh && \
     # The following steps are a workaround for the following bugs
     # https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1127
     # https://github.com/hashicorp/vagrant/issues/11020
@@ -29,7 +29,8 @@ RUN dnf -y --setopt=tsflags='' update && \
     rpm2cpio krb5-1.17-18.el8.src.rpm | cpio -imdV && \
     tar xf krb5-1.17.tar.gz && \
     cd krb5-1.17/src && \
-    LDFLAGS='-L/opt/vagrant/embedded/' CONFIG_SHELL=/bin/bash ./configure && \
+    zsh && \
+    LDFLAGS='-L/opt/vagrant/embedded/' ./configure && \
     make && \
     cp lib/libk5crypto.so.3 /opt/vagrant/embedded/lib64 && \
     cd ../../ && \
