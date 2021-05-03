@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:33
+FROM registry.fedoraproject.org/fedora:34
 
 LABEL name="vagrant-container" \
       version="2.2.15-1" \
@@ -25,10 +25,10 @@ RUN dnf -y --setopt=tsflags='' update && \
     echo 'export CONFIGURE_ARGS="with-libvirt-include=/usr/include/libvirt with-libvirt-lib=/usr/lib64"' >> /etc/profile && \
     mkdir workaround && \
     cd workaround && \
-    wget http://vault.centos.org/8.2.2004/BaseOS/Source/SPackages/krb5-1.17-18.el8.src.rpm && \
-    rpm2cpio krb5-1.17-18.el8.src.rpm | cpio -imdV && \
-    tar xf krb5-1.17.tar.gz && \
-    cd krb5-1.17/src && \
+    wget https://vault.centos.org/8.3.2011/BaseOS/Source/SPackages/krb5-1.18.2-5.el8.src.rpm && \
+    rpm2cpio krb5-1.18.2-5.el8.src.rpm | cpio -imdV && \
+    tar xf krb5-1.18.2.tar.gz && \
+    cd krb5-1.18.2/src && \
     LDFLAGS='-L/opt/vagrant/embedded/' ./configure && \
     make && \
     cp lib/libk5crypto.so.3 /opt/vagrant/embedded/lib64 && \
