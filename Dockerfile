@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:34
+FROM registry.fedoraproject.org/fedora:33
 
 LABEL name="vagrant-container" \
       version="2.2.15-1" \
@@ -29,7 +29,7 @@ RUN dnf -y --setopt=tsflags='' update && \
     rpm2cpio krb5-1.17-18.el8.src.rpm | cpio -imdV && \
     tar xf krb5-1.17.tar.gz && \
     cd krb5-1.17/src && \
-    LDFLAGS='-L/opt/vagrant/embedded/' CONFIG_SHELL=/bin/zsh ./configure && \
+    LDFLAGS='-L/opt/vagrant/embedded/' ./configure && \
     make && \
     cp lib/libk5crypto.so.3 /opt/vagrant/embedded/lib64 && \
     cd ../../ && \
