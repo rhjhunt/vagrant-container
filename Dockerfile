@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:33
+FROM registry.fedoraproject.org/fedora:34
 
 LABEL name="vagrant-container" \
       version="2.2.16" \
@@ -19,6 +19,8 @@ RUN dnf -y --setopt=tsflags='' update && \
     make rdesktop ansible gcc gcc-c++ ruby rubygems rubygem-fog-libvirt rubygem-nokogiri cpio cmake \
     rubygem-bundler rubygem-rdoc rubygem-rspec rubygem-thor rubygems-devel libxml2-devel dnf-plugins-core \
     flex bison libxml2-devel libxslt-devel wget perl-vars && \
+    echo 'LANG=en_US.utf-8' >> /etc/environment && \
+    echo 'LC_ALL=en_US.utf-8' >> /etc/environment && \
     # The following steps are a workaround for the following bugs
     # https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1127
     # https://github.com/hashicorp/vagrant/issues/11020
