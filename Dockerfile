@@ -1,7 +1,7 @@
-FROM registry.fedoraproject.org/fedora:34
+FROM registry.fedoraproject.org/fedora:35
 
 LABEL name="vagrant-container" \
-      version="2.2.16" \
+      version="2.2.18-1" \
       architecture="x86_64" \
       url="https://github.com/rhjhunt/vagrant-container" \
       vcs-type="git" \
@@ -14,13 +14,13 @@ LABEL name="vagrant-container" \
            quay.io/rhjhunt/vagrant-container:latest"
 
 RUN dnf -y --setopt=tsflags='' update && \ 
-    dnf -y --setopt=tsflags='' install https://releases.hashicorp.com/vagrant/2.2.16/vagrant_2.2.16_x86_64.rpm && \
+    dnf -y --setopt=tsflags='' install https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.rpm && \
     dnf -y --setopt=tsflags='' install openssh-clients libvirt-daemon-kvm qemu-kvm libvirt-devel xz \
-    make rdesktop ansible gcc gcc-c++ ruby rubygems rubygem-fog-libvirt rubygem-nokogiri cpio cmake \
+    make rdesktop ansible gcc gcc-c++ ruby ruby-devel rubygems rubygem-fog-libvirt rubygem-nokogiri cpio cmake \
     rubygem-bundler rubygem-rdoc rubygem-rspec rubygem-thor rubygems-devel libxml2-devel dnf-plugins-core \
     flex bison libxml2-devel libxslt-devel wget perl-vars && \
-    echo 'LANG=en_US.utf-8' >> /etc/environment && \
-    echo 'LC_ALL=en_US.utf-8' >> /etc/environment && \
+    #echo 'LANG=en_US.utf-8' >> /etc/environment && \
+    #echo 'LC_ALL=en_US.utf-8' >> /etc/environment && \
     # The following steps are a workaround for the following bugs
     # https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1127
     # https://github.com/hashicorp/vagrant/issues/11020
@@ -40,10 +40,12 @@ RUN dnf -y --setopt=tsflags='' update && \
     tar xf libssh-*.tar.xz && \
     mkdir build && \
     cd build && \
-    cmake ../libssh-0.9.5 -DOPENSSL_ROOT_DIR=/opt/vagrant/embedded/ && \
+    cmake ../libssh-* -DOPENSSL_ROOT_DIR=/opt/vagrant/embedded/ && \
     make && \
     cp lib/libssh* /opt/vagrant/embedded/lib64 && \
     cd ../../ && \
+    # Workaround to build vagrant-libvirt on Fedora 34
+    #ln -s /opt/vagrant/embedded/include/ruby-3.0.0/ruby/st.h /opt/vagrant/embedded/include/ruby-3.0.0/st.h && \
     rm -rf workaround && \
     dnf clean all && \
     rm -rf /var/cache/dnf
