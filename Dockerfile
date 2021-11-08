@@ -18,7 +18,7 @@ RUN dnf -y --setopt=tsflags='' update && \
     dnf -y --setopt=tsflags='' install openssh-clients libvirt-daemon-kvm qemu-kvm libvirt-devel xz \
     make rdesktop ansible gcc gcc-c++ ruby ruby-devel rubygems rubygem-fog-libvirt rubygem-nokogiri cpio cmake \
     rubygem-bundler rubygem-rdoc rubygem-rspec rubygem-thor rubygems-devel libxml2-devel dnf-plugins-core \
-    flex bison libxml2-devel libxslt-devel wget perl-vars && \
+    flex bison libxml2-devel libxslt-devel wget perl-vars crontabs && \
     #echo 'LANG=en_US.utf-8' >> /etc/environment && \
     #echo 'LC_ALL=en_US.utf-8' >> /etc/environment && \
     # The following steps are a workaround for the following bugs
