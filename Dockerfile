@@ -1,7 +1,7 @@
 FROM registry.fedoraproject.org/fedora:35
 
 LABEL name="vagrant-container" \
-      version="2.2.18-1" \
+      version="2.2.19" \
       architecture="x86_64" \
       url="https://github.com/rhjhunt/vagrant-container" \
       vcs-type="git" \
@@ -14,7 +14,7 @@ LABEL name="vagrant-container" \
            quay.io/rhjhunt/vagrant-container:latest"
 
 RUN dnf -y --setopt=tsflags='' update && \ 
-    dnf -y --setopt=tsflags='' install https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.rpm && \
+    dnf -y --setopt=tsflags='' install https://releases.hashicorp.com/vagrant/2.2.19/vagrant_2.2.19_x86_64.rpm && \
     dnf -y --setopt=tsflags='' install openssh-clients libvirt-daemon-kvm qemu-kvm libvirt-devel xz \
     make rdesktop ansible gcc gcc-c++ ruby ruby-devel rubygems rubygem-fog-libvirt rubygem-nokogiri cpio cmake \
     rubygem-bundler rubygem-rdoc rubygem-rspec rubygem-thor rubygems-devel libxml2-devel dnf-plugins-core \
