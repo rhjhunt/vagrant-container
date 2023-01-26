@@ -17,7 +17,7 @@ RUN INSTALL_PKGS="https://releases.hashicorp.com/vagrant/2.3.4/vagrant-2.3.4-1.x
 	openssh-clients libvirt-daemon-kvm qemu-kvm libvirt-devel xz \
 	make rdesktop ansible gcc gcc-c++ ruby ruby-devel rubygems rubygem-fog-libvirt rubygem-nokogiri cpio cmake \
 	rubygem-bundler rubygem-rdoc rubygem-rspec rubygem-thor rubygems-devel libxml2-devel dnf-plugins-core \
-	flex bison libxml2-devel libxslt-devel wget perl-vars crontabs" && \
+	flex bison libxml2-devel libxslt-devel wget perl-vars crontabs python3-winrm" && \
     dnf install -y --setopt=install_weak_deps=0 --nodocs ${INSTALL_PKGS} && \
     dnf clean all --enablerepo='*'
 
