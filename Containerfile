@@ -1,7 +1,7 @@
-FROM registry.fedoraproject.org/fedora:37
+FROM registry.fedoraproject.org/fedora:38
 
 LABEL name="vagrant-container" \
-      version="2.3.4-1" \
+      version="2.3.8-1" \
       architecture="x86_64" \
       url="https://github.com/rhjhunt/vagrant-container" \
       vcs-type="git" \
@@ -13,7 +13,7 @@ LABEL name="vagrant-container" \
            --env HOME=${HOME} --workdir $(pwd) --net host --privileged --security-opt label=disable \
            quay.io/rhjhunt/vagrant-container:latest"
 
-RUN INSTALL_PKGS="https://releases.hashicorp.com/vagrant/2.3.4/vagrant-2.3.4-1.x86_64.rpm \
+RUN INSTALL_PKGS="https://releases.hashicorp.com/vagrant/2.3.6/vagrant-2.3.6-1.x86_64.rpm \
 	openssh-clients libvirt-daemon-kvm qemu-kvm libvirt-devel xz \
 	make rdesktop ansible gcc gcc-c++ ruby ruby-devel rubygems rubygem-fog-libvirt rubygem-nokogiri cpio cmake \
 	rubygem-bundler rubygem-rdoc rubygem-rspec rubygem-thor rubygems-devel libxml2-devel dnf-plugins-core \
